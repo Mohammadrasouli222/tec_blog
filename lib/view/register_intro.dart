@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
-import 'package:tec_blog/my_colors.dart';
-import 'package:tec_blog/my_strings.dart';
+import 'package:tec_blog/component/my_colors.dart';
+import 'package:tec_blog/component/my_strings.dart';
 import 'package:tec_blog/view/my_cats.dart';
 import 'package:validators/validators.dart';
 

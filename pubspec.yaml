@@ -39,7 +39,8 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_svg: ^2.2.0
   validators: ^3.0.0
-
+  get: ^4.7.2
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
