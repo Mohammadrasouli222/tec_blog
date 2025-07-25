@@ -1,6 +1,6 @@
 class MyStrings {
   static const String techBlogGithubUrl =
-      "https://github.com/sasansafari/techblog";
+      "https://www.google.com/";
   static const String viewHotestBlog = "مشاهده داغ ترین نوشته ها ";
   static const String viewHotestPodCasts = "مشاهده داغ ترین پادکست ها";
   static const String relatedArticle = "نوشته های مرتبط";
@@ -13,7 +13,7 @@ class MyStrings {
   static const String insertYourEmail = "لطفا ایمیلت رو وارد کن";
   static const String activateCode = "کد فعال سازی رو وارد کن ";
   static const String chooseCats = "دسته بندی هایی که دوست داری رو انتخاب کن";
-  static const String welcom = """به تک‌بلاگ خوش اومدی
+  static const String welcom = """به داراکد خوش اومدی
 
 برای ارسال مطلب و پادکست باید حتما 
 ثبت نام کنی """;
@@ -22,9 +22,9 @@ class MyStrings {
 اضافه نکردی !!!""";
   static const String shareText = """
 
-من از تکبلاگ استفاده میکنم ، خیلی باحاله ، تو هم داشته باش\n
+من از داراکد استفاده میکنم ، خیلی باحاله ، تو هم داشته باش\n
 
-www.sasansafari.com
+www.daracode.ir
 
 """;
   static const String podcastEmpty = """  
@@ -65,17 +65,17 @@ www.sasansafari.com
   static String writePodcast = "write podcast";
   static String titleArticleText = "مقالات";
   static String userProfile =  "پروفایل کاربری";
-  static String aboutTec =  "درباره تکبلاگ";
-  static String shareTec =  "اشتراک گذاری تک بلاگ";
-  static String tecIngithub =  "تک‌بلاگ در گیت هاب";
+  static String aboutTec =  "درباره داراکد";
+  static String shareTec =  "اشتراک گذاری داراکد";
+  static String tecIngithub =  "داراکد در گیت هاب";
   static String shareKnowledge =  "دونسته هات رو با بقیه به اشتراک بذار ...";
   static String gigTech =  """
 فکر کن !!  اینجا بودنت به این معناست که یک گیک تکنولوژی هستی
 دونسته هات رو با  جامعه‌ی گیک های فارسی زبان به اشتراک بذار..
 """;
 
-  static String nameFatemeAmiri =  "فاطمه امیری";
-  static String gmailFatemeAmiri =  "fatemeamiri@gmail.com";
+  static String nameFatemeAmiri =  "امیر رسولی";
+  static String gmailFatemeAmiri =  "daracode@gmail.com";
   static String exit =  "خروج";
   static String cancel =  "لغو";
   static String error =  "خطا";
@@ -91,7 +91,7 @@ www.sasansafari.com
   static String  minute="دقیقه";
   static String  houre="ساعت";
   static String  isEmail="isEmail:";
-  static String  tecEmail="techblog@gmail.com";
+  static String  tecEmail="daracode@gmail.com";
   static String  enterEmaile= "لطفا ایمیل خود را به درستی وارد کنید";
   static String  formatEmailNotCorrect= "فرمت ایمیل درست نمیباشد, لطفا ایمیل خود را به درستی وارد کنید";
   static String  selectAudioFile="انتخاب فابل صوتی";

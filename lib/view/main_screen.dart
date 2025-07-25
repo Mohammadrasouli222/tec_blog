@@ -1,26 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:tec_blog/component/api_constant.dart';
+import 'package:tec_blog/component/my_component.dart';
+import 'package:tec_blog/component/my_strings.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
 import 'package:tec_blog/component/my_colors.dart';
+import 'package:tec_blog/services/dio_services.dart';
 import 'package:tec_blog/view/home_screen.dart';
 import 'package:tec_blog/view/profile_screen.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
-
-
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
 
   final GlobalKey<ScaffoldState> _key = GlobalKey();
 
-class _MainScreenState extends State<MainScreen> {
+  class MainScreen extends StatelessWidget {
 
-  var selectedPageIndex = 0; //not
+  RxInt selectedPageIndex = 0.obs;
+
+  MainScreen({super.key}); //not
 
 
   @override
   Widget build(BuildContext context) {
+
+    DioService().getMethod(ApiConstant.getHomeItems);
+
     var textTheme = Theme.of(context).textTheme;
     var size = MediaQuery.of(context).size;
     double bodyMargin = size.width/10;
@@ -65,8 +69,8 @@ class _MainScreenState extends State<MainScreen> {
             
                   ListTile(
                     title: Text(" اشتراک گذاری داراکد",style: textTheme.bodyLarge,),
-                    onTap: () {
-                       
+                    onTap: () async{
+                      await Share.share(MyStrings.shareText);
                     },
                   ),
             
@@ -77,7 +81,7 @@ class _MainScreenState extends State<MainScreen> {
                   ListTile(
                     title: Text(" داراکد در گیت هاب",style: textTheme.bodyLarge,),
                     onTap: () {
-                       
+                      myLaunchUrl(MyStrings.techBlogGithubUrl);
                     },
                   ),
             
@@ -112,19 +116,19 @@ class _MainScreenState extends State<MainScreen> {
         body: Stack(
           children: [
           Positioned.fill(
-          child: IndexedStack(
-            index: selectedPageIndex,
+          child: Obx(() =>  IndexedStack(
+            index: selectedPageIndex.value,
             children: [
                 HomeScreen(size: size, textTheme: textTheme, bodyMargin: bodyMargin), //0
                 ProfileScreen(size: size, textTheme: textTheme, bodyMargin: bodyMargin), //1
             ],
-          )
+          ))
           
           ),
           BottomNavigation(size: size, bodyMargin: bodyMargin, changeScreen: (int value){
-            setState(() {
-              selectedPageIndex = value;
-            });
+
+              selectedPageIndex.value = value;
+            
           }, ),
 
           ],
@@ -135,6 +139,7 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 }
+
 
 class BottomNavigation extends StatelessWidget {
   const BottomNavigation({
