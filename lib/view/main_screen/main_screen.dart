@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:tec_blog/component/api_constant.dart';
 import 'package:tec_blog/component/my_component.dart';
 import 'package:tec_blog/component/my_strings.dart';
+import 'package:tec_blog/controller/registerController.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
 import 'package:tec_blog/component/my_colors.dart';
-import 'package:tec_blog/services/dio_services.dart';
-import 'package:tec_blog/view/home_screen.dart';
-import 'package:tec_blog/view/profile_screen.dart';
+import 'package:tec_blog/view/main_screen/home_screen.dart';
+import 'package:tec_blog/view/main_screen/profile_screen.dart';
 
 
   final GlobalKey<ScaffoldState> _key = GlobalKey();
 
+
   class MainScreen extends StatelessWidget {
-
   RxInt selectedPageIndex = 0.obs;
-
   MainScreen({super.key}); //not
 
 
@@ -68,6 +66,7 @@ import 'package:tec_blog/view/profile_screen.dart';
                   ListTile(
                     title: Text(" اشتراک گذاری داراکد",style: textTheme.bodyLarge,),
                     onTap: () async{
+                      
                       await Share.share(MyStrings.shareText);
                     },
                   ),
@@ -139,8 +138,9 @@ import 'package:tec_blog/view/profile_screen.dart';
 }
 
 
+
 class BottomNavigation extends StatelessWidget {
-  const BottomNavigation({
+   const BottomNavigation({
     super.key,
     required this.size,
     required this.bodyMargin,
@@ -186,7 +186,12 @@ class BottomNavigation extends StatelessWidget {
               color: Colors.white,
               )),
             
-            IconButton(onPressed: ((){}),
+            IconButton(
+            onPressed: ((){
+              // _registerController.toggleLogin();
+              Get.find<RegisterController>().toggleLogin();
+            }),
+
             icon: ImageIcon(
               Assets.icons.write.image().image,
               color: Colors.white,

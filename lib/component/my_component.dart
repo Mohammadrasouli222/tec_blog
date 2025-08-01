@@ -1,10 +1,10 @@
-// ignore_for_file: file_names
-
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
+import 'package:tec_blog/component/text_style.dart';
+import 'package:tec_blog/controller/home_screen_controller.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
-import 'package:tec_blog/models/fake_data.dart';
 import 'package:tec_blog/component/my_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -28,6 +28,7 @@ class TechDivider extends StatelessWidget {
 }
 
 
+
 class MainTags extends StatelessWidget {
    MainTags({
     super.key,
@@ -36,7 +37,9 @@ class MainTags extends StatelessWidget {
   });
 
   final TextTheme textTheme;
-  var index;
+
+  final int index; // تغییر نوع به int
+  
 
   @override
   Widget build(BuildContext context) {
@@ -55,22 +58,15 @@ class MainTags extends StatelessWidget {
           children: [
           Assets.icons.hashtagicon.image(height: 20),
           SizedBox(width: 8,),
-          Text(tagList[index].title,style: textTheme.headlineMedium,)
+          Text(
+          Get.find<HomeScreenController>().tagsList[index].title!,
+          style: textTheme.headlineMedium,)
           ],
         ),
       ),
     );
   }
 }
-
-// myLaunchUrl(String url) async {
-//   var uri = Uri.parse(url);
-//   if (await canLaunchUrl(uri)) {
-//     await launchUrl(uri);
-//   } else {
-//     log("باز نمیشه ${uri.toString()}");
-//   }
-// }
 
 myLaunchUrl(String url) async {
   var uri = Uri.parse(url);
@@ -82,6 +78,7 @@ myLaunchUrl(String url) async {
 }
 
 
+
 class loading extends StatelessWidget {
   const loading({
     super.key,
@@ -91,4 +88,43 @@ class loading extends StatelessWidget {
   Widget build(BuildContext context) {
     return SpinKitFadingCube(color: SolidColors.primaryColor, size: 32.0);
   }
+}
+PreferredSize appBar(String title) {
+  return PreferredSize(
+    preferredSize: const Size.fromHeight(60),
+    child: Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child: Center(
+                child: Text(
+              title,
+              style: appBarTextStyle,
+            )),
+          ),
+        ],
+        leading: GestureDetector(
+          onTap: () {
+            Get.back();
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                color: SolidColors.primaryColor.withBlue(100),
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(Icons.keyboard_arrow_right_rounded,color: Colors.white,size: 25),
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
 }

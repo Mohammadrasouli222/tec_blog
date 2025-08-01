@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
-import 'package:tec_blog/models/data_models.dart';
 import 'package:tec_blog/models/fake_data.dart';
 import 'package:tec_blog/component/my_colors.dart';
 import 'package:tec_blog/component/my_component.dart';
 import 'package:tec_blog/component/my_strings.dart';
 
+// ignore: use_key_in_widget_constructors
 class MyCats extends StatefulWidget {
   @override
   State<MyCats> createState() => _MyCatsState();
@@ -32,7 +32,7 @@ class _MyCatsState extends State<MyCats> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(height: 32),
-                  SvgPicture.asset(Assets.images.tcbot, height: 100),
+                  SvgPicture.asset(Assets.images.tcbot.path, height: 100),
                   SizedBox(height: 16),
                   Text(
                     MyStrings.successfulRegistration,
@@ -76,7 +76,7 @@ class _MyCatsState extends State<MyCats> {
 
                                 }else{
 
-                                  print("${tagList[index].title} exist");
+                                  debugPrint("${tagList[index].title} exist");
 
                                 }
 
@@ -90,7 +90,7 @@ class _MyCatsState extends State<MyCats> {
                   ),
 
                   SizedBox(height: 16),
-                  Image.asset(Assets.icons.bluePen.path, scale: 3),
+                  Image.asset(Assets.icons.blueDown.path, scale: 2),
                   //selected Tags
                   Padding(
                     padding: const EdgeInsets.only(top: 32),

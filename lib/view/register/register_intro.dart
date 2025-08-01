@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/instance_manager.dart';
+import 'package:tec_blog/controller/registerController.dart';
 import 'package:tec_blog/gen/assets.gen.dart';
-import 'package:tec_blog/component/my_colors.dart';
 import 'package:tec_blog/component/my_strings.dart';
-import 'package:tec_blog/view/my_cats.dart';
 import 'package:validators/validators.dart';
 
+
 class RegisterIntro extends StatelessWidget {
-  const RegisterIntro({super.key});
+  RegisterIntro({super.key});
+
+  var registerController = Get.find<RegisterController>();
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,7 @@ class RegisterIntro extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SvgPicture.asset(Assets.images.tcbot, height: 100),
+              SvgPicture.asset(Assets.images.tcbot.path, height: 100),
               Padding(
                 padding: const EdgeInsets.only(top: 16),
                 child: RichText(
@@ -83,11 +86,10 @@ class RegisterIntro extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(24),
                     child: TextField(
+                      controller: registerController.emailTextEditingController,
                       onChanged: (value) {
-
                         isEmail(value);
-
-                        print(value + "is Email : " + isEmail(value).toString());
+                        debugPrint(value + "is Email : " + isEmail(value).toString());
 
                       },
                       style: textTheme.titleMedium,
@@ -99,11 +101,15 @@ class RegisterIntro extends StatelessWidget {
                     ),
                   ),
 
-                  ElevatedButton(onPressed: (() {
+                  ElevatedButton(
+                    onPressed: (() async{
+                    registerController.register();
                     Navigator.pop(context);
                     _activateCodeBottomSheet(context, size, textTheme);
 
-                  }), child: Text("ادامه")),
+                  }),
+
+                  child: Text("ادامه")),
                 ],
               ),
             ),
@@ -147,11 +153,11 @@ class RegisterIntro extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(24),
                     child: TextField(
-                      onChanged: (value) {
+                      controller: registerController.activeCodeTextEditingController,
 
+                      onChanged: (value) {                        
                         isEmail(value);
-
-                        print(value + "is Email : " + isEmail(value).toString());
+                        debugPrint(value + "is Email : " + isEmail(value).toString());
 
                       },
                       style: textTheme.titleMedium,
@@ -163,8 +169,10 @@ class RegisterIntro extends StatelessWidget {
                     ),
                   ),
 
-                  ElevatedButton(onPressed: (() {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>MyCats()));
+                  ElevatedButton(
+                    onPressed: (() {
+                    registerController.verify();
+                    // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>MyCats()));
                   }), child: Text("ادامه")),
                 ],
               ),
@@ -174,4 +182,5 @@ class RegisterIntro extends StatelessWidget {
       }),
     );
   }
+
 }
